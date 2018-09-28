@@ -2,6 +2,7 @@ package com.chenfu.concurrency.example;
 
 import com.chenfu.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,7 +11,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @ThreadSafe
-public class CountExample {
+public class CountExample1 {
     public static int threadTotal = 200;
 
     public static int clientTotal = 5000;
@@ -39,7 +40,7 @@ public class CountExample {
         System.out.println("count:" + count.get());
     }
 
-    private static void add() {
+    private  static void add() {
         count.incrementAndGet();
     }
 }
