@@ -1,7 +1,8 @@
-package com.chenfu.concurrency.example.count;
+package com.chenfu.example.count;
 
-import com.chenfu.concurrency.annoations.ThreadSafe;
+import com.chenfu.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -10,12 +11,12 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @ThreadSafe
-public class CountExample2 {
+public class CountExample1 {
     public static int threadTotal = 200;
 
     public static int clientTotal = 5000;
 
-    public static int count = 0;
+    public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) throws Exception{
 
@@ -26,7 +27,7 @@ public class CountExample2 {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    addCount();
+                    add();
                     semaphore.release();
                 } catch (InterruptedException e) {
                     log.error("exception:",e);
@@ -36,10 +37,10 @@ public class CountExample2 {
         }
         countDownLatch.await();
         executorService.shutdown();
-        System.out.println("count:" + count);
+        System.out.println("count:" + count.get());
     }
 
-    private synchronized static void addCount() {
-        count++;
+    private  static void add() {
+        count.incrementAndGet();
     }
 }

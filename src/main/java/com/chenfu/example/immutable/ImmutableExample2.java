@@ -1,13 +1,10 @@
-package com.chenfu.concurrency.example.immutable;
+package com.chenfu.example.immutable;
 
-import com.chenfu.concurrency.annoations.ThreadSafe;
+import com.chenfu.annoations.ThreadSafe;
 import com.google.common.collect.ImmutableList;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
 
-import java.util.Collections;
-import java.util.Map;
 @ThreadSafe
 public class ImmutableExample2 {
 

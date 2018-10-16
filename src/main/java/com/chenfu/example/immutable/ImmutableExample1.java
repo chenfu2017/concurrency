@@ -1,6 +1,6 @@
-package com.chenfu.concurrency.example.immutable;
+package com.chenfu.example.immutable;
 
-import com.chenfu.concurrency.annoations.ThreadSafe;
+import com.chenfu.annoations.ThreadSafe;
 import com.google.common.collect.Maps;
 
 import java.util.Collections;

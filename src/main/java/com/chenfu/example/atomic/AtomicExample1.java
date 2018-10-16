@@ -1,41 +1,47 @@
-package com.chenfu.concurrency.example.count;
+package com.chenfu.example.atomic;
 
-import com.chenfu.concurrency.annoations.NotThreadSafe;
+import com.chenfu.annoations.ThreadSafe;
+import lombok.extern.slf4j.Slf4j;
+
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-@NotThreadSafe
-public class ConcurrencyTest {
+import java.util.concurrent.atomic.LongAdder;
 
-    public static int threadTotal =200;
+@Slf4j
+@ThreadSafe
+public class AtomicExample1 {
+    public static int threadTotal = 200;
 
-    public static int clientTotal=5000;
+    public static int clientTotal = 5000;
 
-    public static int count=0;
+    public static LongAdder count = new LongAdder();
 
     public static void main(String[] args) throws Exception{
+
         ExecutorService executorService = Executors.newCachedThreadPool();
         final Semaphore semaphore = new Semaphore(threadTotal);
         CountDownLatch countDownLatch = new CountDownLatch(clientTotal);
         for (int i = 0; i < clientTotal; i++) {
-            executorService.execute(()->{
+            executorService.execute(() -> {
                 try {
                     semaphore.acquire();
                     add();
+                    add();
                     semaphore.release();
                 } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    log.error("exception:",e);
                 }
                 countDownLatch.countDown();
             });
         }
         countDownLatch.await();
         executorService.shutdown();
-        System.out.println("count:"+count);
+        System.out.println("count:" + count);
     }
 
     private static void add() {
-        count++;
+        count.increment();
     }
 }

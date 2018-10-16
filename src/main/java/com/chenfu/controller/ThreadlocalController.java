@@ -1,16 +1,18 @@
-package com.chenfu.concurrency;
+package com.chenfu.controller;
 
+import com.chenfu.example.threadlocal.RequestHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
-public class TestController {
+@RequestMapping("/threadlocal")
+public class ThreadlocalController {
 
     @RequestMapping("/test")
     @ResponseBody
-    public String test() {
-        return "test";
+    public Long test(){
+        return RequestHolder.get();
     }
-}
 
+}

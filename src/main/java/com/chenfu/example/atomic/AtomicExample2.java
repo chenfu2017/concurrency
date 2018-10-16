@@ -1,6 +1,6 @@
-package com.chenfu.concurrency.example.atomic;
+package com.chenfu.example.atomic;
 
-import com.chenfu.concurrency.annoations.ThreadSafe;
+import com.chenfu.annoations.ThreadSafe;
 import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;

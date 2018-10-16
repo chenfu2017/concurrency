@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.example.count;
+package com.chenfu.example.count;
 
 
 import lombok.extern.slf4j.Slf4j;

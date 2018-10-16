@@ -1,7 +1,7 @@
-package com.chenfu.concurrency.example.escape;
+package com.chenfu.example.escape;
 
-import com.chenfu.concurrency.annoations.NotCommend;
-import com.chenfu.concurrency.annoations.NotThreadSafe;
+import com.chenfu.annoations.NotCommend;
+import com.chenfu.annoations.NotThreadSafe;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j

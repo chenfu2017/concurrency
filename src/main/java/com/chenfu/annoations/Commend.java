@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.annoations;
+package com.chenfu.annoations;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
