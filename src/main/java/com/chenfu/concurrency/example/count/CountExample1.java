@@ -1,25 +1,22 @@
-package com.chenfu.concurrency.example;
+package com.chenfu.concurrency.example.count;
 
 import com.chenfu.concurrency.annoations.ThreadSafe;
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
-import java.util.concurrent.atomic.AtomicBoolean;
-import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
-import java.util.concurrent.atomic.LongAdder;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Slf4j
 @ThreadSafe
-public class AtomicExample3 {
+public class CountExample1 {
     public static int threadTotal = 200;
 
     public static int clientTotal = 5000;
 
-    public static AtomicBoolean isHappened= new AtomicBoolean(false);
+    public static AtomicInteger count = new AtomicInteger(0);
 
     public static void main(String[] args) throws Exception{
 
@@ -30,7 +27,7 @@ public class AtomicExample3 {
             executorService.execute(() -> {
                 try {
                     semaphore.acquire();
-                    test();
+                    add();
                     semaphore.release();
                 } catch (InterruptedException e) {
                     log.error("exception:",e);
@@ -40,12 +37,10 @@ public class AtomicExample3 {
         }
         countDownLatch.await();
         executorService.shutdown();
-        System.out.println("ishappened:" + isHappened.get());
+        System.out.println("count:" + count.get());
     }
 
-    private static void test() {
-        if(isHappened.compareAndSet(false, true)){
-            log.info("success");
-        }
+    private  static void add() {
+        count.incrementAndGet();
     }
 }

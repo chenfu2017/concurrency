@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.example;
+package com.chenfu.concurrency.example.count;
 
 import com.chenfu.concurrency.annoations.NotThreadSafe;
 import java.util.concurrent.CountDownLatch;

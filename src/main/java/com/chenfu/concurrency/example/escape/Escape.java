@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.example;
+package com.chenfu.concurrency.example.escape;
 
 import com.chenfu.concurrency.annoations.NotCommend;
 import com.chenfu.concurrency.annoations.NotThreadSafe;

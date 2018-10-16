@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.example;
+package com.chenfu.concurrency.example.atomic;
 
 import com.chenfu.concurrency.annoations.ThreadSafe;
 import lombok.extern.slf4j.Slf4j;
@@ -8,15 +8,16 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.LongAdder;
 
 @Slf4j
 @ThreadSafe
-public class CountExample1 {
+public class AtomicExample1 {
     public static int threadTotal = 200;
 
     public static int clientTotal = 5000;
 
-    public static AtomicInteger count = new AtomicInteger(0);
+    public static LongAdder count = new LongAdder();
 
     public static void main(String[] args) throws Exception{
 
@@ -28,6 +29,7 @@ public class CountExample1 {
                 try {
                     semaphore.acquire();
                     add();
+                    add();
                     semaphore.release();
                 } catch (InterruptedException e) {
                     log.error("exception:",e);
@@ -37,10 +39,10 @@ public class CountExample1 {
         }
         countDownLatch.await();
         executorService.shutdown();
-        System.out.println("count:" + count.get());
+        System.out.println("count:" + count);
     }
 
-    private  static void add() {
-        count.incrementAndGet();
+    private static void add() {
+        count.increment();
     }
 }

@@ -1,4 +1,4 @@
-package com.chenfu.concurrency.example;
+package com.chenfu.concurrency.example.atomic;
 
 import com.chenfu.concurrency.annoations.ThreadSafe;
 import lombok.Getter;
