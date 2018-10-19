@@ -1,7 +1,6 @@
 package com.chenfu.example.aqs;
 
 import lombok.extern.slf4j.Slf4j;
-
 import java.util.concurrent.*;
 
 @Slf4j
