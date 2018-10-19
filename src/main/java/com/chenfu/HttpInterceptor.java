@@ -1,6 +1,6 @@
 package com.chenfu;
 
-import com.chenfu.example.threadlocal.RequestHolder;
+import com.chenfu.threadlocal.RequestHolder;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import javax.servlet.http.HttpServletRequest;
